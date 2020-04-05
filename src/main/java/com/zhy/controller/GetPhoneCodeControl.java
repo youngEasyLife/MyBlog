@@ -47,7 +47,7 @@ public class GetPhoneCodeControl {
     /**
      * 阿里云短信发送模板
      */
-    private static final String SIGN_NAME = "张海洋ocean";
+    private static final String SIGN_NAME = "王佩阳ocean";
 
     @PostMapping(value = "/getCode", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String getAuthCode(HttpServletRequest request){

@@ -1,9 +1,9 @@
 
     //网站最后更新时间（版本更新需更改）
-    var siteLastUpdateTime = '2019年12月02日19点';
+    var siteLastUpdateTime = '2020年04月05日17点';
 
     //网站开始时间
-    var siteBeginRunningTime = '2018-07-25 20:00:00';
+    var siteBeginRunningTime = '2020-04-04 16:00:00';
 
     // 广告上下滚动
     function getStyle(obj,name){
@@ -260,7 +260,7 @@
                 total:data['data']['pageInfo']['total'],//总记录数
                 flag:0,
                 callback:function(currentPage){
-                    newCommentAjax(currentPage);
+                    // newCommentAjax(currentPage);
                 }
             });
 
@@ -280,7 +280,7 @@
                 pageNum:currentPage
             },
             success: function (data) {
-                putInNewLeaveWord(data['data']);
+                // putInNewLeaveWord(data['data']);
 
                 //分页
                 $(".newLeaveWordPagination").paging({
@@ -308,8 +308,8 @@
 
     ajaxFirst(1);
 
-    newCommentAjax(1);
-    newLeaveWordAjax(1);
+    // newCommentAjax(1);
+    // newLeaveWordAjax(1);
 
     //标签云
     $.ajax({

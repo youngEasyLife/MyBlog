@@ -6,7 +6,7 @@
         <div class="header">
             <div class="am-topbar" style="margin-bottom: 0">
                 <h1 class="am-topbar-brand">
-                    <a href="/" class="blogTitleName"><img src="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/zhy.png" class="imgStyle">程序猿张先森</a>
+                    <a href="/" class="blogTitleName"><img src="https://www.peiyoung.com/wpy.jpg" class="imgStyle">程序猿peiyoung</a>
                 </h1>
 
                 <!--手机适配导航显示按钮-->
@@ -23,12 +23,12 @@
                         <li><a class="top_bar" href="/aboutme" style="cursor: pointer;"><span class="am-icon-user"></span>&nbsp;关于我</a> </li>
                     </ul>
 
-                    <div class="am-topbar-right reward am-show-sm-down">
-                        <a  href="/reward" style="text-decoration: none">
-                            <img class="am-circle" src="/img/favicon.png">
-                            <span class="reward-word">公益募捐</span>
-                        </a>
-                    </div>
+<!--                    <div class="am-topbar-right reward am-show-sm-down">-->
+<!--                        <a  href="/reward" style="text-decoration: none">-->
+<!--                            <img class="am-circle" src="/img/favicon.png">-->
+<!--                            <span class="reward-word">公益募捐</span>-->
+<!--                        </a>-->
+<!--                    </div>-->
 
                     <div class="am-topbar-right" th:if="${#httpServletRequest.remoteUser}">
                         <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
@@ -44,24 +44,24 @@
                         </div>
                     </div>
 
-                    <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
-                        <a href="/register" class="am-btn am-btn-primary am-topbar-btn am-btn-sm" style="color: white">注册</a>
-                    </div>
-                    <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
-                        <a href="/login" class="loginBtn am-btn am-btn-primary am-topbar-btn am-btn-sm" style="color: white">登录</a>
-                    </div>
+<!--                    <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">-->
+<!--                        <a href="/register" class="am-btn am-btn-primary am-topbar-btn am-btn-sm" style="color: white">注册</a>-->
+<!--                    </div>-->
+<!--                    <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">-->
+<!--                        <a href="/login" class="loginBtn am-btn am-btn-primary am-topbar-btn am-btn-sm" style="color: white">登录</a>-->
+<!--                    </div>-->
                     <div class="am-topbar-right writing am-hide-md-down">
                         <a  href="/editor" target="_blank" style="text-decoration: none">
                             <img class="am-circle" src="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/writing.png">
                             <span class="write-word">写博客</span>
                         </a>
                     </div>
-                    <div class="am-topbar-right reward am-hide-sm-down">
-                        <a  href="/reward" style="text-decoration: none">
-                            <img class="am-circle" src="/img/favicon.png">
-                            <span class="reward-word">公益募捐</span>
-                        </a>
-                    </div>
+<!--                    <div class="am-topbar-right reward am-hide-sm-down">-->
+<!--                        <a  href="/reward" style="text-decoration: none">-->
+<!--                            <img class="am-circle" src="/img/favicon.png">-->
+<!--                            <span class="reward-word">公益募捐</span>-->
+<!--                        </a>-->
+<!--                    </div>-->
 
                 </div>
             </div>
