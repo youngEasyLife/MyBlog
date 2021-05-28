@@ -18,7 +18,7 @@
             <!-- 文件截断的条件，具体参考文档 -->
             <Policies>
                 <TimeBasedTriggeringPolicy interval="24"/>
-                <SizeBasedTriggeringPolicy size="100 MB"/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
             </Policies>
         </RollingFile>
         
@@ -33,7 +33,7 @@
             </PatternLayout>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="24"/>
-                <SizeBasedTriggeringPolicy size="100 MB"/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
             </Policies>
         </RollingFile>
 	 </Appenders>

@@ -17,8 +17,12 @@ import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * @author: zhangocean
@@ -38,7 +42,7 @@ public class DruidDataSourceConfig {
 
     @Bean(name = "druidDataSource")
     @Primary
-    public DataSource dataSource(@Autowired Environment environment){
+    public DataSource dataSource(@Autowired Environment environment) {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl(environment.getProperty("spring.datasource.url"));
         dataSource.setUsername(environment.getProperty("spring.datasource.username"));
@@ -72,30 +76,46 @@ public class DruidDataSourceConfig {
      * 配置Druid监控的StatViewServlet和WebStatFilter
      */
     @Bean
-    public ServletRegistrationBean druidServlet(){
+    public ServletRegistrationBean<StatViewServlet> druidServlet() {
         log.info("init Druid Servlet Configuration ");
-      ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();
-      servletRegistrationBean.setServlet(new StatViewServlet());
-      servletRegistrationBean.addUrlMappings("/druid/*");
-      Map<String, String> initParameters = new HashMap<String, String>();
-      initParameters.put("loginUsername", druidUsername);
-      initParameters.put("loginPassword", druidPassword);
-      initParameters.put("resetEnable", "true");
+        ServletRegistrationBean<StatViewServlet> servletRegistrationBean = new ServletRegistrationBean<>();
+        servletRegistrationBean.setServlet(new StatViewServlet());
+        servletRegistrationBean.addUrlMappings("/druid/*");
+        Map<String, String> initParameters = new HashMap<String, String>();
+        initParameters.put("loginUsername", druidUsername);
+        initParameters.put("loginPassword", druidPassword);
+        initParameters.put("resetEnable", "true");
         //下面是黑白名单，多个ip地址之间用逗号隔开
 //      initParameters.put("allow", "119.23.202.55,127.0.0.1,10.24.38.152");
 //      initParameters.put("deny", "119.23.202.55");
-      servletRegistrationBean.setInitParameters(initParameters);
+        servletRegistrationBean.setInitParameters(initParameters);
 
-      return servletRegistrationBean;
+        return servletRegistrationBean;
     }
 
     @Bean
-    public FilterRegistrationBean filterRegistrationBean(){
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-      filterRegistrationBean.setFilter(new WebStatFilter());
-      filterRegistrationBean.addUrlPatterns("/*");
-      filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
-      return filterRegistrationBean;
+    public FilterRegistrationBean<WebStatFilter> filterRegistrationBean() {
+        FilterRegistrationBean<WebStatFilter> filterRegistrationBean = new FilterRegistrationBean<WebStatFilter>();
+        filterRegistrationBean.setFilter(new WebStatFilter());
+        filterRegistrationBean.addUrlPatterns("/*");
+        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+        return filterRegistrationBean;
     }
 
+
+    public static void main(String[] args) {
+        List<Integer> str = new ArrayList<>();
+        str.add(1);
+        str.add(2);
+        str.add(21);
+        str.add(3);
+        Stream<Integer> i = str.stream().filter(s -> s > 1).limit(1);
+        Collections.sort(str);
+        i.forEach(System.out::println);
+
+        str.forEach(System.out::println);
+
+        List<Integer> ss = new ArrayList<>(str);
+        ss.forEach(System.out::println);
+    }
 }
